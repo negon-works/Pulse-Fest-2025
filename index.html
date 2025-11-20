@@ -1,0 +1,961 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pulse Fest 2025 | Premium Neon Experience</title>
+    <link href="https://fonts.googleapis.com/css2?family=Major+Mono+Display&family=Poppins:wght@300;600;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" integrity="sha512-..." crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+    <style>
+        :root {
+            --dark-bg: #0c001a; /* Darker background for more contrast */
+            --neon-pink: #ff00ff;
+            --neon-blue: #00ffff;
+            --text-color: #f0f0f0;
+            --font-family: 'Poppins', sans-serif;
+            --section-padding: 100px 5%;
+        }
+
+        body {
+            margin: 0;
+            padding: 0;
+            background-color: var(--dark-bg);
+            color: var(--text-color);
+            font-family: var(--font-family);
+            overflow-x: hidden;
+            line-height: 1.6;
+        }
+        body::after {
+            content: "";
+            display: block;
+            height: 100px;
+            background: #040008;
+        }
+
+
+        /* --- Global Styles --- */
+
+        h2 {
+            font-size: 3.5em;
+            text-align: center;
+            margin: 0 0 60px;
+            letter-spacing: 8px;
+            text-transform: uppercase;
+            text-shadow: 0 0 10px var(--neon-pink), 0 0 20px rgba(255, 0, 255, 0.5);
+            position: relative;
+        }
+
+        section {
+            padding: var(--section-padding);
+            min-height: 70vh;
+            position: relative;
+        }
+
+        .section-separator {
+            border: 0;
+            height: 1px;
+            background-image: linear-gradient(to right, transparent, rgba(0, 255, 255, 0.5), transparent);
+            margin: 50px 0;
+        }
+        
+        /* --- Unique Header/Nav --- */
+        .header-placeholder {
+            height: 85px; /* Adjust height for the new header size */
+            background: linear-gradient(to bottom, rgb(22 3 48) 0%, rgb(12 0 27) 100%);
+        }
+
+        .main-header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            background: rgba(12, 0, 26, 0.9);
+            backdrop-filter: blur(5px);
+            z-index: 1000;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 5%;
+            box-shadow: 0 0 15px rgba(0, 255, 255, 0.3);
+            transform: translateY(-100%);
+            transition: transform 0.3s ease-out;
+        }
+
+        .header-logo {
+            font-family: 'Major Mono Display', monospace;
+            font-size: 1.8em;
+            color: var(--neon-blue);
+            text-shadow: 0 0 10px var(--neon-blue);
+            letter-spacing: 5px;
+            text-decoration: none;
+        }
+
+        .header-nav {
+            display: flex; /* Always visible on desktop */
+            align-items: center;
+        }
+        .header-nav a {
+            color: var(--text-color);
+            text-decoration: none;
+            margin-left: 25px;
+            font-weight: 600;
+            font-size: 1.1em;
+            transition: color 0.3s ease, text-shadow 0.3s ease;
+        }
+
+        .header-nav a:hover {
+            color: var(--neon-pink);
+            text-shadow: 0 0 10px var(--neon-pink);
+        }
+
+        .main-header.scrolled {
+            transform: translateY(0);
+        }
+
+        /* --- Hamburger Menu (New) --- */
+        .menu-toggle {
+            display: none; /* Hide by default on desktop */
+            cursor: pointer;
+            width: 30px;
+            height: 25px;
+            position: relative;
+            z-index: 1010;
+        }
+
+        .menu-toggle span {
+            display: block;
+            position: absolute;
+            height: 3px;
+            width: 100%;
+            background: var(--neon-blue);
+            border-radius: 5px;
+            opacity: 1;
+            left: 0;
+            transform: rotate(0deg);
+            transition: 0.35s ease-in-out;
+            box-shadow: 0 0 5px var(--neon-blue);
+        }
+
+        /* Set positions and custom lengths */
+        .menu-toggle span:nth-child(1) {
+            top: 0px;
+            width: 70%; /* Small first line */
+        }
+
+        .menu-toggle span:nth-child(2) {
+            top: 11px;
+            width: 95%; /* Long center line */
+        }
+
+        .menu-toggle span:nth-child(3) {
+            top: 22px;
+            width: 70%; /* Small last line */
+        }
+
+        /* "X" transformation classes */
+        .menu-toggle.open span:nth-child(1) {
+            top: 11px;
+            width: 100%; /* Make full length before rotating */
+            transform: rotate(135deg);
+            box-shadow: 0 0 5px var(--neon-pink); /* Change color for visual feedback */
+        }
+        .menu-toggle.open span:nth-child(2) {
+            opacity: 0; /* Hide middle line */
+            left: -30px;
+        }
+        .menu-toggle.open span:nth-child(3) {
+            top: 11px;
+            width: 100%; /* Make full length before rotating */
+            transform: rotate(-135deg);
+            box-shadow: 0 0 5px var(--neon-pink);
+        }
+
+        /* --- Hero Section (Existing Styles) --- */
+        /* --- Hero Section (Fixed) --- */
+        .hero {
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            overflow: hidden;
+            position: relative;
+            background-color: #1a0033;
+        }
+
+        /* Background Video */
+        .hero-background {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            opacity: 0.25; /* soft visibility */
+            z-index: 0;
+            transform: scale(1.2);
+            filter: saturate(120%) contrast(110%) brightness(0.8);
+        }
+
+        /* Fog Overlay (the glowing gradient) */
+        .hero::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 300%;
+            height: 300%;
+            background: radial-gradient(
+                circle at center,
+                rgba(255, 0, 255, 0.4) 0%,
+                rgba(0, 255, 255, 0) 15%,
+                rgba(13, 0, 22, 0) 50%
+            );
+            z-index: 1;
+            opacity: 0.6;
+            filter: blur(20px);
+        }
+
+        /* Text */
+        .hero-title {
+            font-size: 7em;
+            font-weight: 900;
+            text-transform: uppercase;
+            z-index: 2;
+            text-shadow: 0 0 5px var(--neon-blue), 0 0 10px var(--neon-pink);
+            line-height: 0.85;
+            letter-spacing: 10px;
+            color: #fff;
+        }
+
+        .hero-subtitle {
+            font-size: 2.2em;
+            letter-spacing: 12px;
+            color: var(--neon-pink);
+            margin-top: 30px;
+            text-shadow: 0 0 8px var(--neon-pink);
+            z-index: 2;
+        }
+
+
+/* --- Lineup Section Styles --- */
+.lineup-grid {
+    display: flex;
+    justify-content: center;
+    gap: 30px;
+    flex-wrap: wrap;
+    padding: 50px 0;
+}
+
+/* 1. The main card is the container for the zoom effect */
+.artist-card {
+    width: 250px;
+    height: 300px;
+    border-radius: 15px;
+    /* Removed padding to cover full area, added padding to inner content */
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    align-items: center;
+    text-align: center;
+    box-shadow: 0 0 10px rgba(0, 255, 255, 0.4);
+    border: 1px solid var(--neon-blue);
+    overflow: hidden; /* **CRUCIAL: Clips the zoomed background** */
+    transition: all 0.4s ease;
+    position: relative; /* **CRUCIAL: Context for the absolute zoom layer** */
+}
+
+/* 2. The new element that holds the background and is animated */
+.artist-card-bg-zoom {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-size: cover;
+    background-position: center;
+    transform: scale(1); /* Initial scale (no zoom) */
+    z-index: 1; /* Place behind the text content */
+}
+
+/* Background image mappings (now targeting the zoom element) */
+.artist-card-bg-zoom.img1 { background-image: url('img1.png'); }
+.artist-card-bg-zoom.img2 { background-image: url('img2.png'); }
+.artist-card-bg-zoom.img3 { background-image: url('img3.png'); }
+.artist-card-bg-zoom.img4 { background-image: url('img4.png'); }
+
+/* 3. Wrapper for text content to ensure it's above the zoom layer */
+.card-content {
+    position: relative;
+    z-index: 2; /* Ensures content is visible */
+    width: 100%;
+    /* Use padding here to create the internal space */
+    padding: 20px; 
+}
+
+/* Card Content Styles */
+.card-name {
+    font-weight: bold;
+    font-size: 1.4em;
+    text-shadow: 0 0 5px var(--dark-bg);
+    background-color: rgba(0, 0, 0, 0.7);
+    padding: 10px 15px;
+    border-radius: 8px;
+    width: 100%;
+    backdrop-filter: blur(2px);
+}
+
+/* Hover effect on the card (kept from original styles) */
+.artist-card:hover {
+    transform: translateY(-10px) scale(1.02);
+    box-shadow: 0 10px 30px rgba(255, 0, 255, 0.6);
+}
+        /* --- Schedule Section (Existing Styles) --- */
+        .schedule-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 50px;
+            border-radius: 15px;
+            background: linear-gradient(145deg, rgba(0, 255, 255, 0.05), rgba(255, 0, 255, 0.05));
+            box-shadow: 0 0 30px rgba(0, 255, 255, 0.2);
+            overflow: hidden;
+        }
+        .schedule-item {
+            display: grid;
+            grid-template-columns: 120px 1fr 100px;
+            gap: 30px;
+            align-items: center;
+            padding: 15px 0;
+            border-bottom: 1px solid rgba(255, 0, 255, 0.2);
+            font-size: 1.1em;
+            transition: background-color 0.3s ease;
+        }
+        .schedule-item-initial {
+            transform: translateX(-100px);
+        }
+        .schedule-item:hover {
+            background-color: rgba(255, 0, 255, 0.05);
+        }
+        .schedule-item:last-child {
+            border-bottom: none;
+        }
+        .schedule-time {
+            color: var(--neon-blue);
+            font-weight: 700;
+            letter-spacing: 1px;
+        }
+        .schedule-day {
+            color: var(--neon-pink);
+            font-weight: 700;
+            text-align: right;
+        }
+
+        /* --- Gallery Section (Existing Styles) --- */
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 25px;
+            margin-top: 40px;
+        }
+        .gallery-item {
+            height: 280px;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 0 10px var(--neon-pink);
+            border: 1px solid var(--neon-blue);
+        }
+        .gallery-item-initial {
+            clip-path: inset(100% 0 0 0);
+        }
+        .gallery-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+            filter: brightness(0.95);
+            transition: transform 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+        }
+        .gallery-item:hover img {
+            transform: scale(1.08) rotate(1deg);
+        }
+
+        /* --- Tickets Section (Existing Styles) --- */
+        .tickets-section {
+            background-image: url('https://images.pexels.com/photos/15729734/pexels-photo-15729734/free-photo-of-audience-at-music-festival.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2');
+            background-size: cover;
+            background-position: center;
+            min-height: 50vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+        }
+        .tickets-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-color: rgba(0, 0, 0, 0.7);
+            z-index: 1;
+        }
+        .tickets-content {
+            z-index: 2;
+            padding: 40px;
+            max-width: 700px;
+            background: rgba(0, 0, 0, 0.5);
+            border-radius: 15px;
+            box-shadow: 0 0 40px rgba(0, 255, 255, 0.4);
+        }
+        .tickets-content h2 {
+            margin-top: 0;
+        }
+        .ticket-btn {
+            background-color: var(--neon-pink);
+            color: var(--dark-bg);
+            border: none;
+            padding: 18px 50px;
+            margin-top: 30px;
+            font-size: 1.6em;
+            font-weight: 800;
+            text-transform: uppercase;
+            border-radius: 50px;
+            cursor: pointer;
+            transition: all 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
+            box-shadow: 0 0 25px var(--neon-pink);
+        }
+        .ticket-btn:hover {
+            background-color: var(--neon-blue);
+            box-shadow: 0 0 40px var(--neon-blue), 0 0 60px rgba(0, 255, 255, 0.5);
+            color: var(--dark-bg);
+            transform: scale(1.08);
+        }
+        /* --- Footer Styling (Full) --- */
+        .main-footer {
+            background-color: #040008;
+            padding: 30px 5%;
+            border-top: 1px solid rgba(0, 255, 255, 0.1);
+            position: relative;
+            z-index: 100;
+        }
+
+        .footer-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 1200px;
+            margin: 0 auto;
+            flex-wrap: wrap;
+        }
+
+        .footer-social,
+        .footer-logo {
+            flex-basis: 30%; /* Allocate space */
+            min-width: 150px; /* Prevent shrinking too much */
+        }
+
+        .footer-social {
+            display: flex;
+            gap: 20px;
+            justify-content: flex-end;
+        }
+
+        .footer-copyright {
+            flex-basis: 40%;
+            text-align: center;
+        }
+
+        .footer-logo-text {
+            font-size: 1.5em; /* Slightly smaller than header logo */
+            letter-spacing: 4px;
+            color: var(--neon-blue);
+            text-shadow: 0 0 8px var(--neon-blue);
+            text-decoration: none;
+        }
+
+        .footer-copyright {
+            text-align: center;
+            font-size: 0.9em;
+            color: rgba(240, 240, 240, 0.6);
+        }
+
+        /* --- Social Icons --- */
+        .social-icon {
+            text-decoration: none;
+            transition: transform 0.3s ease, text-shadow 0.3s ease, color 0.3s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .social-icon i {
+            font-size: 2.0em;
+            color: var(--neon-pink);
+            text-shadow: 0 0 8px var(--neon-pink);
+        }
+
+        /* Hover Effects */
+        .social-icon:hover {
+            transform: scale(1.15) translateY(-2px);
+        }
+
+        .social-icon.whatsapp-icon:hover i {
+            color: #00ff00; /* WhatsApp green */
+            text-shadow: 0 0 10px #00ff00;
+        }
+
+        .social-icon.facebook-icon:hover i {
+            color: var(--neon-blue); /* Facebook blue */
+            text-shadow: 0 0 10px var(--neon-blue);
+        }
+
+        .social-icon.instagram-icon:hover i {
+            color: #ff00ff; /* Instagram neon pink */
+            text-shadow: 0 0 10px #ff00ff;
+        }
+
+        /* --- Responsive Footer --- */
+        @media (max-width: 768px) {
+            .footer-content {
+                flex-direction: row;
+                text-align: center;
+                gap: 15px;
+            }
+
+            .footer-social {
+                justify-content: center;
+                margin-bottom: 20px;
+            }
+
+            .footer-logo,
+            .footer-copyright,
+            .footer-social {
+                flex-basis: 100%;
+                text-align: center;
+            }
+
+            .footer-copyright {
+                order: 3;
+                margin-top: 15px;
+            }
+        }
+
+        
+        /* Elements to be animated by ScrollTrigger */
+        .fade-up-initial {
+              opacity: 0;
+              transform: translateY(50px);
+        }
+
+        /* ---------------------------------------------------- */
+        /* --- Media Queries for Responsiveness (New Section) --- */
+        /* ---------------------------------------------------- */
+        @media (max-width: 900px) {
+            /* Show hamburger menu on smaller screens */
+            .menu-toggle {
+                display: block;
+            }
+
+            .main-header {
+                padding: 15px 0;
+                justify-content: space-evenly;
+                width: 100% !important;
+                margin-left: 0;
+            }
+
+            .header-nav {
+                /* Initially hide and position the mobile menu */
+                display: flex;
+                flex-direction: column;
+                position: fixed;
+                top: 0;
+                right: -300px; /* Off-screen */
+                width: 250px;
+                height: 100vh;
+                padding: 100px 20px 20px;
+                background: rgba(12, 0, 26, 0.95);
+                backdrop-filter: blur(10px);
+                transition: right 0.4s ease-in-out;
+                z-index: 999;
+                box-shadow: -5px 0 30px rgba(0, 255, 255, 0.4);
+            }
+            .header-nav.open {
+                right: 0; /* Slide in */
+            }
+            .header-nav a {
+                margin: 15px 0;
+                font-size: 1.4em;
+                text-align: center;
+                width: 100%;
+                border-bottom: 1px solid rgba(255, 0, 255, 0.1);
+                padding-bottom: 5px;
+            }
+        }
+
+        @media (max-width: 600px) {
+            :root {
+                /* Reduce overall padding */
+                --section-padding: 60px 5%;
+            }
+
+            h2 {
+                /* Scale down section titles */
+                font-size: 2.5em;
+                letter-spacing: 5px;
+                margin-bottom: 40px;
+            }
+
+            /* --- Hero Section Adjustment --- */
+            .hero {
+                height: 80vh; /* Shorter hero on mobile */
+            }
+            .hero-title {
+                /* Scale down main title dramatically */
+                font-size: 4em;
+                letter-spacing: 5px;
+                text-align: center;
+            }
+            .hero-subtitle {
+                font-size: 1.5em;
+                letter-spacing: 8px;
+                margin-top: 15px;
+            }
+
+            /* --- Header/Nav Adjustment --- */
+            .header-placeholder {
+                height: 85px; /* Keep consistent with header height */
+            }
+
+            /* --- Lineup Cards Adjustment --- */
+            .artist-card {
+                width: 100%; /* Make cards full width on mobile */
+                max-width: 350px;
+                height: 250px;
+            }
+
+            /* --- Schedule Table Adjustment --- */
+            .schedule-grid {
+                padding: 20px;
+            }
+            .schedule-item {
+                /* Switch to stacked layout for schedule items */
+                grid-template-columns: 1fr;
+                gap: 5px;
+                text-align: center;
+                padding: 10px 0;
+            }
+            .schedule-time, .schedule-day {
+                font-size: 0.9em;
+                text-align: center;
+            }
+            .schedule-act {
+                font-size: 1.1em;
+                font-weight: 600;
+                order: -1; /* Move the name to the top */
+            }
+
+            /* --- Tickets Button Adjustment --- */
+            .ticket-btn {
+                padding: 15px 40px;
+                font-size: 1.4em;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <header class="main-header" id="mainHeader">
+        <a href="#" class="header-logo">PULSE | 2025</a>
+        
+        <div class="menu-toggle" id="menuToggle">
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
+
+        <nav class="header-nav" id="headerNav">
+            <a href="#lineup">Lineup</a>
+            <a href="#schedule">Schedule</a>
+            <a href="#gallery">Gallery</a>
+            <a href="#tickets">Tickets</a>
+        </nav>
+    </header>
+
+    <section class="hero">
+        <video class="hero-background" autoplay muted loop playsinline>
+            <source src="herobg.mp4" type="video/mp4" />
+        </video>
+        <h1 class="hero-title animate-hero">Pulse Fest</h1>
+        <p class="hero-subtitle animate-hero">2025</p>
+    </section>
+
+
+    <div class="header-placeholder" id="headerPlaceholder"></div>
+
+    <hr class="section-separator">
+
+    <section id="lineup" class="lineup-section">
+        <h2 class="fade-up-initial">Lineup</h2>
+        <div class="lineup-grid">
+
+            <div class="artist-card">
+                <div class="artist-card-bg-zoom img1"></div> 
+                <div class="card-content">
+                    <span class="card-name">ELECTRO PULSE</span>
+                </div>
+            </div>
+            
+            <div class="artist-card">
+                <div class="artist-card-bg-zoom img2"></div> 
+                <div class="card-content">
+                    <span class="card-name">DJ VORTEX</span>
+                </div>
+            </div>
+
+            <div class="artist-card">
+                <div class="artist-card-bg-zoom img3"></div>
+                <div class="card-content">
+                    <span class="card-name">NEON RYDER</span>
+                </div>
+            </div>
+
+            <div class="artist-card">
+                <div class="artist-card-bg-zoom img4"></div>
+                <div class="card-content">
+                    <span class="card-name">GLOW BEATS</span>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <hr class="section-separator">
+
+    <section id="schedule" class="schedule-section">
+        <h2 class="fade-up-initial">Schedule</h2>
+        <div class="schedule-grid">
+            <div class="schedule-item schedule-item-initial">
+                <span class="schedule-time">7:00 PM</span>
+                <span class="schedule-act">Opening Ceremony & Laser Show</span>
+                <span class="schedule-day">DAY 1</span>
+            </div>
+            <div class="schedule-item schedule-item-initial">
+                <span class="schedule-time">9:00 PM</span>
+                <span class="schedule-act">DJ VORTEX</span>
+                <span class="schedule-day">DAY 1</span>
+            </div>
+            <div class="schedule-item schedule-item-initial">
+                <span class="schedule-time">8:00 PM</span>
+                <span class="schedule-act">NEON RYDER</span>
+                <span class="schedule-day">DAY 2</span>
+            </div>
+            <div class="schedule-item schedule-item-initial">
+                <span class="schedule-time">10:00 PM</span>
+                <span class="schedule-act">ELECTRO PULSE (Headliner)</span>
+                <span class="schedule-day">DAY 2</span>
+            </div>
+        </div>
+    </section>
+
+    <hr class="section-separator">
+
+    <section id="gallery" class="gallery-section">
+        <h2 class="fade-up-initial">Gallery</h2>
+        <div class="gallery-grid">
+            <div class="gallery-item gallery-item-initial">
+                <img src="https://images.pexels.com/photos/1105666/pexels-photo-1105666.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2" alt="Stage lights and crowd">
+            </div>
+            <div class="gallery-item gallery-item-initial">
+                <img src="https://images.pexels.com/photos/14761042/pexels-photo-14761042.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2" alt="DJ on stage">
+            </div>
+            <div class="gallery-item gallery-item-initial">
+                <img src="https://images.pexels.com/photos/2082103/pexels-photo-2082103.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2" alt="Crowd with hands up">
+            </div>
+        </div>
+    </section>
+
+    <hr class="section-separator">
+
+    <section id="tickets" class="tickets-section">
+        <div class="tickets-content">
+            <h2 class="fade-up-initial">Tickets</h2>
+            <p class="fade-up-initial" style="font-size: 1.3em; margin-bottom: 40px;">Don't miss the pulse of 2025. Secure your spot for two nights of pure electric energy.</p>
+            <button class="ticket-btn fade-up-initial">Get Tickets Now</button>
+        </div>
+    </section>
+
+    <footer class="main-footer">
+        <div class="footer-content">
+
+            <div class="footer-logo">
+                <a href="#" class="header-logo footer-logo-text">PULSE | 2025</a>
+            </div>
+
+            <div class="footer-copyright">
+                &copy; 2025 Pulse Fest. All Rights Reserved.
+            </div>
+
+            <div class="footer-social">
+                <a href="#" class="social-icon whatsapp-icon" aria-label="WhatsApp">
+                    <i class="fab fa-whatsapp"></i>
+                </a>
+                <a href="#" class="social-icon facebook-icon" aria-label="Facebook">
+                    <i class="fab fa-facebook-f"></i>
+                </a>
+                <a href="#" class="social-icon instagram-icon" aria-label="Instagram">
+                    <i class="fab fa-instagram"></i>
+                </a>
+            </div>
+
+        </div>
+    </footer>
+
+<script>
+    gsap.registerPlugin(ScrollTrigger);
+
+    // Get elements for the menu
+    const menuToggle = document.getElementById('menuToggle');
+    const headerNav = document.getElementById('headerNav');
+    
+    // --- New: Hamburger Menu Click Handler ---
+    menuToggle.addEventListener('click', () => {
+        // Toggle the 'open' class on the toggle button for the X animation
+        menuToggle.classList.toggle('open');
+        // Toggle the 'open' class on the navigation for sliding the menu in/out
+        headerNav.classList.toggle('open');
+    });
+
+    // Close menu when a navigation link is clicked (on mobile)
+    headerNav.querySelectorAll('a').forEach(link => {
+        link.addEventListener('click', () => {
+            if (window.innerWidth <= 900) {
+                menuToggle.classList.remove('open');
+                headerNav.classList.remove('open');
+            }
+        });
+    });
+
+
+    // Get the placeholder element to set the ScrollTrigger start point
+    const headerPlaceholder = document.getElementById('headerPlaceholder');
+
+    // --- 1. Unique Header/Nav Animation (Hidden-Reveal) ---
+    gsap.to(".main-header", {
+        y: 0,
+        duration: 0.3,
+        ease: "power2.out",
+        scrollTrigger: {
+            trigger: headerPlaceholder,
+            start: "top top",
+            end: 99999,
+            toggleClass: "scrolled",
+            toggleActions: "play none none reverse",
+            pin: false,
+        }
+    });
+
+
+    // 2. Hero Moving Gradient Animation (runs once on load)
+    gsap.to(".hero::after", {
+        x: "-66%",
+        y: "-66%",
+        duration: 15,
+        ease: "none",
+        repeat: -1,
+        yoyo: true,
+        cssRule: true 
+    });
+
+    // Hero Text Entrance Animation (runs once on load)
+    gsap.from(".animate-hero", {
+        y: 50,
+        opacity: 0,
+        stagger: 0.4,
+        duration: 1.5,
+        ease: "power3.out",
+        delay: 0.5
+    });
+
+
+    // --- 3. Bi-Directional ScrollTrigger Animations (using scrub: true) ---
+
+    // A. Universal Fade Up (for headings and non-staggered elements)
+    document.querySelectorAll(".fade-up-initial").forEach(el => {
+        gsap.fromTo(el, { 
+            opacity: 0, 
+            y: 50 
+        }, {
+            opacity: 1, 
+            y: 0,
+            duration: 1,
+            ease: "power2.out",
+            scrollTrigger: {
+                trigger: el,
+                start: "top 90%",
+                end: "bottom 10%",
+                scrub: 1.5, 
+            }
+        });
+    });
+    // B. lineup 
+
+    const lineupTL = gsap.timeline({
+        scrollTrigger: {
+            trigger: ".lineup-grid",
+            start: "top 95%", // Start the subtle zoom when the grid enters the viewport (5% from top)
+            end: "bottom 20%", // Complete the zoom when the grid is near the bottom
+            scrub: 1.5, // Smooth scrub effect: 1.5 seconds delay between scroll and animation
+        }
+    });
+
+    // Animate the scale of the background layer on ALL artist cards
+    lineupTL.to(".artist-card-bg-zoom", {
+        scale: 1.2, // Subtle 8% zoom-in when scrolling down
+        ease: "none", // Linear animation tied directly to scroll progress
+    });
+
+    // C. Schedule Items (Slide and Fade with Timeline and Scrub)
+    const scheduleTL = gsap.timeline({
+        scrollTrigger: {
+            trigger: ".schedule-grid",
+            start: "top 90%",
+            end: "bottom center",
+            scrub: 1,
+        }
+    });
+
+    scheduleTL.to(".schedule-item-initial", {
+        opacity: 1,
+        x: 0,
+        stagger: 0.15, 
+        duration: 1,
+        ease: "power1.out",
+    });
+
+    // D. Gallery Items (Clip-Path Reveal with Timeline and Scrub)
+    const galleryTL = gsap.timeline({
+        scrollTrigger: {
+            trigger: ".gallery-grid",
+            start: "top 80%",
+            end: "bottom bottom",
+            scrub: 1.5,
+        }
+    });
+
+    galleryTL.to(".gallery-item-initial", {
+        clipPath: 'inset(0% 0% 0% 0%)',
+        scale: 1,
+        stagger: 0.1, 
+        duration: 1.5,
+        ease: "power3.out",
+    });
+
+</script>
+</body>
+</html>
